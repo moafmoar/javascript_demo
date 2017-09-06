@@ -10,9 +10,10 @@
     #r-result{height:100%;width:20%;float:left;}
 </style>
 <body>
-  <div id="allmap"></div>
+  <div style="height: 500px; width: 600px;" id="allmap"></div>
 </body>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=gzmbGdFDMXmZZjF0pzvF0Nl1qR4IFUP8"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
 <script type="text/javascript">
     var map = new BMap.Map("allmap");
     var point = new BMap.Point(116.404, 39.915);
@@ -22,11 +23,11 @@
 
 
     var polyline = new BMap.Polyline([
-        //new BMap.Point(116.399, 39.910),
+        new BMap.Point(116.399, 39.910),
         new BMap.Point(116.405, 39.920),
         new BMap.Point(116.425,39.91936),
         new BMap.Point(116.415,39.93936),
-// new BMap.Point(116.415,39.92936),
+        new BMap.Point(116.415,39.92936),
     ], {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5});
     map.addOverlay(polyline);
     addArrow(polyline,10,Math.PI/7);
