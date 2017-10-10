@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../../static/css/bootstrap/bootstrap-select.css">
+<link rel="stylesheet" type="text/css" href="../../static/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+<link rel="stylesheet" href="../../static/css/bootstrap/bootstrap-theme.css" type="text/css"/>
+
+
+<body>
+<div class="form-group">
+    <div class="col-md-2 control-label"><label>学段:</label></div>
+    <div class="col-md-3 controls">
+        <select id="period" name="period"  class="selectpicker show-tick form-control" multiple data-live-search="false" >
+            <option value="-1">--请选择！--</option>
+            <option value="0">小学</option>
+            <option value="1">初中</option>
+            <option value="2">高中</option>
+            <option value="0">小学1</option>
+            <option value="1">初中2</option>
+            <option value="2">高中3</option>
+        </select>
+    </div>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="../../static/lib/base/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/lib/bootstarp/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="../../static/lib/bootstarp/js/bootstrap.js"></script>
+
+<script>
+    $(window).on('load', function () {
+        $('#period').selectpicker({
+            'selectedText': 'cat'
+        });
+        $('.selectpicker').selectpicker('val', '1,2');
+    });
+
+</script>
+</html>
