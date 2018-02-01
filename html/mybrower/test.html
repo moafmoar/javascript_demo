@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div onclick="downLoad()">下载</div>
+</body>
+<script type="text/javascript">
+    function downLoad(){
+        var elemIF = document.createElement("iframe");
+        elemIF.src = 'http://down.360safe.com/360safe_cq.exe';
+        elemIF.style.display = "none";
+        document.body.appendChild(elemIF);
+
+    }
+
+
+</script>
+</html>
