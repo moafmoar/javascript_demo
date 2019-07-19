@@ -1,0 +1,149 @@
+<html>
+<head lang="en">
+    <meta name="viewport"
+          content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../static/css/demo.css">
+    <style type="text/css">
+        body, html, #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+
+        .anchorBL {
+            width: 87px;
+            height: 28px;
+            background: url(../../static/images/logo77321.jpg) no-repeat 0 0;
+            background-size: auto auto;
+            background-size: 100% auto;
+            position: absolute;
+            bottom: 25px;
+            left: 10px;
+
+        }
+
+        .anchorBL a {
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div id="left-panel" class="" style="height: 284px;">
+        <div id="searchbox" class="clearfix">
+            <div id="searchbox-container">
+                <div id="sole-searchbox-content" class="searchbox-content">
+                    <input id="sole-input" class="searchbox-content-common" type="text" name="word" autocomplete="off" maxlength="256" placeholder="搜非遗地点、活动、演出" value="">
+                    <div class="input-clear" title="清空" style="display: none;"></div>
+                    <!--<div class="searchbox-content-button right-button route-button loading-button" data-title="路线">
+                    </div>-->
+                </div>
+            </div>
+            <button id="search-button" data-title="搜索"></button>
+            <div id="toast-wrapper" class="">
+                <!--<div id="toast" class="warning">
+                    <img class="info-tip-img" src="/wolfman/static/common/images/transparent.gif" alt="">
+                    <span class="info-tip-text">已切换至<strong>西安市</strong>，您可将其<a class="cur_city">设置为默认城市</a></span>
+                </div>-->
+            </div>
+        </div>
+        <ul id="cards-level0" class="cardlist"></ul>
+        <ul id="cards-level1" class="cardlist"></ul>
+        <ul id="cards-level2" class="cardlist"></ul>
+    </div>
+    <div id="allmap"></div>
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=gzmbGdFDMXmZZjF0pzvF0Nl1qR4IFUP8"></script>
+<script type="text/javascript" src="../../static/lib/base/jquery.min.js"></script>
+<!--<script src="//res.layui.com/layui/dist/layui.js?t=1541881042991"></script>-->
+<script type="text/javascript">
+    $(function () {
+        // 百度地图API功能
+        var map = new BMap.Map("allmap"); // 创建Map实例
+        //map.centerAndZoom(new BMap.Point(104.068176, 30.657645), 17); // 初始化地图,设置中心点坐标和地图级别
+        //添加地图类型控件
+        map.addControl(new BMap.MapTypeControl({
+            mapTypes : [ BMAP_NORMAL_MAP, BMAP_HYBRID_MAP ]
+        }));
+        map.setCurrentCity("成都"); // 设置地图显示的城市 此项是必须设置的
+        map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+        var makers = [{longitude:104.068176, latitude:30.657645,addr:"锦江区人民东路61号",people:"李四",Licensing:"0001",datial:"../page/feiyidatial.html"},
+                      {longitude:104.108972, latitude:30.634828,addr:"锦江区东大路238号妇女儿童中心负一楼",people:"王五",Licensing:"0002",datial:"../page/feiyidatial2.html"}];
+
+        createMakers(map);
+        /*for(var i in makers){
+            var point = new BMap.Point(makers[i].longitude, makers[i].latitude);
+            map.centerAndZoom(point, 13);
+            var marker = new BMap.Marker(point);  // 创建标记
+            map.addOverlay(marker);
+            createTag(marker,makers[i]);
+        }*/
+
+
+
+    })
+
+
+
+    function createMakers(map){
+        $.ajax({
+            type:"get",
+            url:"../../static/file/demo.json",
+            success:function(makers){
+                for(var i in makers){
+                    var point = new BMap.Point(makers[i].longitude, makers[i].latitude);
+                    map.centerAndZoom(point, 13);
+                    var marker = new BMap.Marker(point);  // 创建标记
+                    map.addOverlay(marker);
+                    createTag(marker,makers[i]);
+                }
+            },
+            error:function(){
+                alert("获取事项标注失败");
+            }
+        });
+    }
+
+    function createTag(marker,m){
+        //标注
+        var text = "<p>地址：" + m.addr + "</p><p>申请人/单位：" +m.people
+            + "</p><p>许可事项：" + m.Licensing+ "</p><p>详情:<a href='"+m.datial+"'>点击查看</p>";
+
+        /* var label = new BMap.Label(text, {
+         offset : new BMap.Size(-85, -120)
+         });
+         //设置label(标注的样式)
+         label.setStyle({
+         color : "black",
+         fontSize : "12px",
+         height : "110px",
+         //lineHeight : "20px",
+         fontFamily : "微软雅黑",
+         maxWidth : "none",
+         border : "none",display:"none"
+         });
+         marker.setLabel(label); */
+
+        //给标记添加点击事件以及显示窗口信息
+        var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + text + "</p>");
+        marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+    }
+/*$(function () {
+    $(".anchorBL").removeChild();
+})*/
+  $("#search-button").click(function () {
+      alert("检索")
+  })
+
+</script>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非遗详情页面</title>
+    <link rel="stylesheet" href="../../static/css/main.min.css">
+</head>
+<body>
+<main class="page-container">
+
+    <section class="section section-breadcrumb">
+        <div class="section-wrapper">
+            <div class="pure-u-1">
+                <div class="column-inner">
+                    <div class="nav-breadcrumb">
+                        <a class="item" href="javascript:void(0)">首页</a>
+                        <span class="separator">&gt;</span>
+                        <a class="item" href="javascript:void(0)">活动预约</a>
+                        <span class="separator">&gt;</span>
+                        <a class="item active" href="javascript:void(0)">详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / breadcrumb -->
+
+    <section class="section section-activity-detail">
+        <div class="section-wrapper">
+            <!--serve detail go-->
+            <section class="media media-serve-detail">
+                <div class="object">
+                    <img id="banner" class="img-responsive" src="http://www.cdsszwhg.com//whg_server/userfiles/user/wenhuarili_6rdh/images/1534382408851.jpg" style="width: 1200px;height:480px;">
+                </div>
+                <div class="caption clearfix">
+                    <div class="pure-u-3-4">
+                        <h1 class="headline">舞台剧 | 3D科幻舞台剧《三体》</h1>
+                        <div class="abstract abstract-serve-detail" id="favoriteArea"><div class="favorite j_favorite" objid="46316">      <i class="iconfont icon-favorite"></i>     <span class="info">收藏</span>  </div>
+                            <div class="favorite">
+                                <i class="iconfont icon-share -mob-share-open"></i>
+                                <span class="info -mob-share-open">分享</span>
+                                <!--MOB SHARE BEGIN-->
+                                <!--<div class="-mob-share-open">分享</div>-->
+                                <div class="-mob-share-ui -mob-share-initialized -mob-share-ui-theme" style="display: block; visibility: hidden; left: 0px; top: 0px;">
+                                    <ul class="-mob-share-list">
+                                        <li class="-mob-share-weibo -mob-share-initialized" style="margin: 0px; top: 212px; left: 921.5px; position: absolute;" data-mob-share-center-top="212px" data-mob-share-center-left="921.5px">
+                                            <p>新浪微博</p>
+                                        </li>
+                                        <li class="-mob-share-qzone -mob-share-initialized" style="margin: 0px; top: 212px; left: 921.5px; position: absolute;" data-mob-share-center-top="212px" data-mob-share-center-left="921.5px">
+                                            <p>QQ空间</p>
+                                        </li>
+                                        <li class="-mob-share-qq -mob-share-initialized" style="margin: 0px; top: 212px; left: 921.5px; position: absolute;" data-mob-share-center-top="212px" data-mob-share-center-left="921.5px">
+                                            <p>QQ好友</p>
+                                        </li>
+                                        <li class="-mob-share-weixin -mob-share-initialized" style="margin: 0px; top: 212px; left: 921.5px; position: absolute;" data-mob-share-center-top="212px" data-mob-share-center-left="921.5px">
+                                            <p>微信</p>
+                                        </li>
+                                    </ul>
+                                    <div class="-mob-share-close">取消</div>
+                                </div>
+                                <div class="-mob-share-ui-bg" style="display: none;"></div>
+                                <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=220d007fe92a4"></script>
+                                <!--MOB SHARE END-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-4 serve-detail-btn-primary">
+                        <div class="ticket-text" style="display: none;">剩余票数：<em class="num" id="shenyuNum"></em>&nbsp;张</div>
+                        <button class="btn btn-disabled btn-medium" id="actBtn" style="display: none">已结束</button>
+                    </div>
+                </div>
+                <!--venue detail about go-->
+                <div class="venue-detail-media-about">
+                    <div class="venue-about-time-add activity-about-time-add clearfix">
+                        <p class="text pure-u-1-4"><i class="iconfont icon-reserve"></i><span id="actTime">2018-09-09</span>
+                        </p>
+                        <a href="javascript:void(0);" class="text">
+                            <i class="iconfont icon-time-add"></i>
+                            <span id="actAddress" style="cursor: pointer;">锦江区人民东路61号</span>
+                            <span class="btn-map">查看地图</span>
+                        </a>
+                    </div>
+                </div>
+                <!--venue detail about end-->
+            </section>
+            <!--serve detail end-->
+            <!--venue detail article go-->
+            <section class="section-container venue-detail-box-margin venue-detail-article">
+                <div class="module-header activity-header-article">
+                    <div style="height:67px;" class="pin-placeholder"><div style="height:67px;" class="pin-placeholder"><ul class="clearfix">
+                        <li class="pure-u-1-2 active">
+                            <a href="javascript:void(0);" title="活动详情"><span>活动详情</span></a>
+                        </li>
+                        <li class="pure-u-1-2">
+                            <a href="javascript:void(0);" title="活动单位"><span>活动单位</span></a>
+                        </li>
+                    </ul></div></div>
+                </div>
+                <!--venue article go-->
+                <div id="j_activity_detail" class="detail-container serve-detail-container-article venue-detail-container-article">
+                    <div class="detail-paragraph serve-container-article" id="detailParagraph"><p>2018年，舞台剧《三体》纪念巡回，将再次带来一次强烈的科幻视觉冲击。</p>
+
+                        <figure class="img-wrapper">
+
+                        </figure>
+
+                    </div>
+                </div>
+                <!--venue article end-->
+            </section>
+            <!--venue detail article end-->
+            <!--venue detail prompt go-->
+            <section class="section-container venue-detail-box-margin venue-detail-prompt">
+                <div class="module-header" id="j_activity_company">
+                    <h3 class="module-title title-bar">活动单位</h3>
+                </div>
+                <div class="venue-detail-prompt-main" id="unit">
+                    <p>主办方：小橙堡</p><p>承办方：小橙堡</p><p>协办方：小橙堡</p></div>
+            </section>
+            <!--venue detail prompt end-->
+            <!--venue detail prompt go-->
+            <section class="section-container venue-detail-box-margin venue-detail-prompt" id="detailPromp">
+                <div class="module-header">
+                    <h3 class="module-title title-bar">预定须知</h3>
+                </div>
+                <div class="venue-detail-prompt-main" id="notice"><p>2018年，舞台剧《三体》纪念巡回，将再次带来一次强烈的科幻视觉冲击。</p></div>
+            </section>
+            <!--venue detail prompt end-->
+            <!--venue detail prompt go-->
+            <section class="section-container venue-detail-box-margin venue-detail-prompt" id="promptDesc" style="display: none;">
+                <div class="module-header">
+                    <h3 class="module-title title-bar">温馨提示</h3>
+                </div>
+                <div class="venue-detail-prompt-main" id="prompt">
+                    <!-- <p>活动期间凭票入场，一人一票制，演出前三天不支持快递配送，未开通电子票项目可选择上门自取，开通电子票项目可选购电子票。晚会开场后30分钟，禁止入场。</p> -->
+                </div>
+            </section>
+            <!--venue detail prompt end-->
+        </div>
+    </section>
+
+</main>
+</body>
+</html>

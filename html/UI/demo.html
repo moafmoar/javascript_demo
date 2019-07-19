@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .data-content {
+        height: 250px;
+        overflow-y: hidden;
+    }
+
+    .table-title {
+        height: 50px;
+        line-height: 50px;
+        background-color: #2688e6;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .data-content .table-row-even {
+        height: 50px;
+        line-height: 50px;
+        background-color: #002d36;
+        font-size: 0;
+    }
+
+    .data-content .table-row-odd {
+        height: 50px;
+        line-height: 50px;
+        background-color: #003e52;
+        font-size: 0;
+    }
+
+    .data-content .td-col1 {
+        display: inline-block;
+        width: 10%;
+        font-size: 16px;
+        color: #fff;
+        text-align:center;
+    }
+    .data-content .td-col2 {
+        display: inline-block;
+        width: 20%;
+        font-size: 16px;
+        color: #fff;
+    }
+    .data-content .td-col3 {
+        display: inline-block;
+        width: 30%;
+        font-size: 16px;
+        color: #fff;
+    }
+    .data-content .td-col4 {
+        display: inline-block;
+        width: 40%;
+        font-size: 16px;
+        color: #fff;
+    }
+
+
+    .data-collapse {
+        animation: data-col .5s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+        overflow:hidden;
+    }
+
+
+    @keyframes data-col {
+        from {
+            height: 50px;
+
+        }
+
+        to {
+            height: 0;
+
+        }
+    }
+</style>
+<body>
+<div class="table-title">
+    <span style="display:inline-block; width:10%;     text-align:center;"> 序号</span>
+    <span style="display:inline-block; width:20%; "> 列2</span>
+    <span style="display:inline-block; width:30%; "> 列3</span>
+    <span style="display:inline-block; width:30%; "> 列4</span>
+</div>
+<div id="data-wrapper1" class="data-content">
+
+</div>
+</body>
+<script type="text/javascript" src="../../static/lib/base/jquery.min.js"></script>
+<script>
+    var rownumber = 5;
+    $(function () {
+        buildRow();
+    })
+    var buildRow = function () {
+        var htmlTemplate = '<div class="{0}"><span class="td-col1">{1}</span><span class="td-col2"> xxx</span><span class="td-col3">行数据</span><span class="td-col4">示例数据</span></div>';
+        var wrapper = $("#data-wrapper1");
+        for (var i = 0; i < 15; i++) {
+            var cls = "table-row-odd";
+            if (i % 2 === 0) {
+                cls = "table-row-even";
+            }
+            wrapper.append(htmlTemplate.format([cls, (i + 1).toString()]));
+        }
+        // 为了让首尾动画衔接上，在数据行的末尾追加开头的N行数据
+        for (var j = 0; j < rownumber; j++) {
+            cls = "table-row-odd";
+            if (j % 2 === 0) {
+                cls = "table-row-even";
+            }
+            wrapper.append(htmlTemplate.format([cls, (j+1).toString()]));
+        }
+    };
+
+    var startDataCollapse = function () {
+        var divs = $("#data-wrapper1").find("div");
+        var divlen = divs.length;
+        var scroll_total = Math.ceil(divlen / rownumber);
+        var times = 1;
+        if (scroll_total > 1) {
+            setInterval(function () {
+                $.each(divs, function (i, itm) {
+                    if (!$(itm).hasClass("data-collapse") && i < times * rownumber) {
+                        $(itm).addClass("data-collapse");
+                    }
+                });
+                if (times === scroll_total) {
+                    times = 1;
+                    $.each(divs, function (i, itm) {
+                        $(itm).removeClass("data-collapse");
+                    });
+                    setTimeout(function () {
+                        doDataCollapse();
+                    }, 500);// 延迟执行刚好为 css动画的执行时间
+                } else {
+                    times++;
+                }
+            }, 2000);
+        }
+    };
+
+    var doDataCollapse = function () {
+        var divsNew = $("#data-wrapper1").find("div");
+        $.each(divsNew, function (i, itm) {
+            if (!$(itm).hasClass("data-collapse") && i < rownumber) {
+                $(itm).addClass("data-collapse");
+            }
+        });
+    };
+
+</script>
+</html>

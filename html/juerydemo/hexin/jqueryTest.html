@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery核心</title>
+</head>
+<body>
+<div>
+    <p>hello world!</p>
+</div>
+<div>
+    <p>hello world!</p>
+</div>
+<div>
+    <p>hello world!</p>
+</div>
+<img/><img/>
+<button>Change colors</button>
+<span></span>
+<div></div>
+<div></div>
+
+<div></div>
+<div></div>
+<div id="stop">Stop here</div>
+<div></div>
+
+<div></div>
+<div></div>
+<input type="checkbox" checked/>1
+<input type="checkbox"/>2
+<input type="checkbox"/>3
+</body>
+<script type="text/javascript" src="../../../static/lib/base/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        console.log($("div>p"));
+        $(document.body).css("background","red");
+        $('<div><p>测试appendTo</p></div>').appendTo('body')
+        $('img').each(function (i) {
+            this.src = 'test'+i+'.jpg'
+        })
+
+        $('img').each(function () {
+            $(this).toggleClass("example");
+        })
+
+        console.log($("input[type='checkbox']").prop('checked'))
+    })
+</script>
+</html>

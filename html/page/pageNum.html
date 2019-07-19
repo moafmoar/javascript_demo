@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../../static/lib/base/jquery.min.js"></script>
+<script type="text/javascript" src="../../static/lib/page/paginationUpdate.js"></script>
+<style>
+
+</style>
+<body>
+    <div class="page-box">
+        <input type="hidden" name="pageInput" value="1">
+        <div class="page1"></div>
+    </div>
+    <div class="page-box">
+        <input type="hidden" name="pageInput" value="10">
+        <div class="page2"></div>
+    </div>
+    <div class="page-box">
+        <input type="hidden" name="pageInput" value="10">
+        <div class="page3"></div>
+        <p>当前第<span class="now">1</span>页</p>
+    </div>
+</body>
+    <script>
+        $(function(){
+            $('.page1').pagination({
+                coping:true,
+                count:2,
+            });
+            $('.page2').pagination({
+                coping:true,
+                count:2,
+                homePage:'首页',
+                endPage:'末页',
+                prevContent:'上页',
+                nextContent:'下页'
+            });
+            $('.page2').pagination({
+                coping:false,
+                count:2,
+                homePage:'首页',
+                endPage:'末页',
+                prevContent:'上页',
+                nextContent:'下页'
+            });
+            $('.page3').pagination({
+                coping:true,
+                count:2,
+                prevContent:'上页',
+                nextContent:'下页',
+                callback:function(options){
+                    var page = options.getCurrent();
+                    $('.now').text(page);
+                    //这里写ajax请求。传递到后端的参数里一定要有当前页的页码哟。
+                }
+            });
+        });
+    </script>
+</html>
